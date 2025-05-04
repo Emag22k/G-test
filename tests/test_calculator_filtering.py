@@ -1,4 +1,5 @@
 import allure
+import time
 from pytest import fixture
 from playwright.sync_api import sync_playwright
 from pages.calculator import CalculatorPage
@@ -22,6 +23,7 @@ def test_calculator_filters(page):
 
     calculator.click_price_filter()
     calculator.set_price_range("83", "100")
+     calculator.wait(5000)
 
     # Check if filtered servers appear
     elements = calculator.page.locator("gcore-cards-list gcore-price-card")
@@ -32,6 +34,8 @@ def test_calculator_filters(page):
     assert count > 0, f"Ожидалось результатов больше 0, но найдено {count}"
 
     calculator.take_screenshot("filtered_servers.png")
+
+    time.sleep(5)
 
 @fixture
 def page():
