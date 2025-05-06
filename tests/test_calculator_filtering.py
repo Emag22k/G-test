@@ -23,7 +23,7 @@ def test_calculator_filters(page):
 
     calculator.click_price_filter()
     calculator.set_price_range("83", "100")
-     calculator.wait(5000)
+    calculator.wait(5000)
 
     # Check if filtered servers appear
     elements = calculator.page.locator("gcore-cards-list gcore-price-card")
